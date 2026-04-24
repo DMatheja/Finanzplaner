@@ -32,11 +32,17 @@ cargo install --locked cargo-leptos         #trunk benutzt man nur für frontend
 
                      #Projekt erstellen:
 cd ~
+
 mkdir -p Entwicklung/Rust
+
 cd Entwicklung/Rust
+
 cargo leptos new --git https://github.com/leptos-rs/start-actix 
+
 #Dann [Projektnamen eingeben]
+
 cd [Project Name]
+
 code . #Öffnet VSCode #optional wenn schon in VSCode
 
 #Gehe im VSCode Explorer links in den Ordner src und öffne die Datei app.rs -> Das ist der source code in Rust.
