@@ -31,7 +31,7 @@ cd ~
 mkdir -p Entwicklung/Rust
 cd Entwicklung/Rust
 cargo leptos new --git https://github.com/leptos-rs/start-actix 
-[Projektnamen eingeben]
+#Dann [Projektnamen eingeben]
 cd [Project Name]
 code . #Öffnet VSCode #optional wenn schon in VSCode
 
