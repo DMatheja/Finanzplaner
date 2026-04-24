@@ -17,11 +17,15 @@ trunk serve                 #startet die Website
 
 #########Anleitung Neu:######## FULL STACK
 Commands immer in WSL ausführen: [Wie im Screenshot zu sehen]
+
 sudo apt update
+
 sudo apt upgrade -y
+
 sudo apt install build-essential pkg-config libssl-dev -y #Windows spezifisch da es sonst Probleme gibt
 
 rustup update
+
 rustup target add wasm32-unknown-unknown #Für das Frontend in WASM
 
 cargo install --locked cargo-leptos         #trunk benutzt man nur für frontend, cargo ist full-stack. Dieser Command braucht eine Weile.
