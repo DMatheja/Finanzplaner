@@ -1,23 +1,13 @@
 # Finanzplaner
 Rust, Leptos (Full Stack), Finanzplaner: 
 
-Alt Anleitung: (Hello world)
-
-sudo apt update
-sudo apt install build-essential
-
-cargo new [projekt-name]    #Erstellt ein Projekt
-cd [projekt-name]           #in die Directory
-cargo add leptos      
-cargo install trunk         #Kann dauern
-
-trunk serve                 #startet die Website
 
 
 
 #########Anleitung Neu:######## FULL STACK
 Commands immer in WSL ausführen: [Wie im Screenshot zu sehen]
-
+---
+```
 sudo apt update
 
 sudo apt upgrade -y
@@ -44,7 +34,7 @@ cargo leptos new --git https://github.com/leptos-rs/start-actix
 cd [Project Name]
 
 code . #Öffnet VSCode #optional wenn schon in VSCode
-
+```
 #Gehe im VSCode Explorer links in den Ordner src und öffne die Datei app.rs -> Das ist der source code in Rust.
 #Jetzt programmieren
 
