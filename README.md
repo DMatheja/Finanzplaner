@@ -37,9 +37,9 @@ code . #Öffnet VSCode #optional wenn schon in VSCode
 ```
 #Gehe im VSCode Explorer links in den Ordner src und öffne die Datei app.rs -> Das ist der source code in Rust.
 #Jetzt programmieren
-
+```
 cargo leptos watch #startet die Website
-
+```
 
 
 <img width="2558" height="1440" alt="image" src="https://github.com/user-attachments/assets/f283c4e0-c183-4177-9ed3-0ed1b0c852c3" />
