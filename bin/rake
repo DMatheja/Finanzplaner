@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+app_root = File.expand_path("..", __dir__)
+Dir.chdir(app_root) { exec "bundle", "exec", "rails", "runner", *ARGV }
