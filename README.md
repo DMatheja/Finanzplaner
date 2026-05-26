@@ -1,46 +1,55 @@
-# Finanzplaner
-Rust, Leptos (Full Stack), Finanzplaner: 
+# Finanzplaner - Rails Budget Management App
 
+A Ruby on Rails budget management application for tracking expenses, categories, and personal finances.
 
+## Features
+- User authentication with role-based access (Admin, User, Viewer)
+- Category management with spending limits
+- Product/expense tracking
+- Expense list and balance calculation
+- Dashboard with account overview
 
+## Setup
 
-#########Anleitung Neu:######## FULL STACK
-Commands immer in WSL ausführen: [Wie im Screenshot zu sehen]
----
-```
-sudo apt update
+1. Install dependencies:
+   ```bash
+   bundle install
+   ```
 
-sudo apt upgrade -y
+2. Create and seed the database:
+   ```bash
+   rails db:create
+   rails db:migrate
+   rails db:seed
+   ```
 
-sudo apt install build-essential pkg-config libssl-dev -y #Windows spezifisch da es sonst Probleme gibt
+3. Start the server:
+   ```bash
+   rails server
+   ```
 
-rustup update
+4. Access the app at http://localhost:3000 and login with test users:
+   - Admin: admin@example.com / password123
+   - User: user@example.com / password123
+   - Viewer: viewer@example.com / password123
 
-rustup target add wasm32-unknown-unknown #Für das Frontend in WASM
+## Database
+SQLite (development database at `db/development.sqlite3`)
 
-cargo install --locked cargo-leptos         #trunk benutzt man nur für frontend, cargo ist full-stack. Dieser Command braucht eine Weile.
+## Priority Features Implemented
 
-                     #Projekt erstellen:
-cd ~
+### Phase 1 (MVP)
+- ✅ Simple login with test users
+- ✅ Header navigation
+- ✅ User management (CRUD, Admin only)
+- ✅ Categories with limits & spending sum
+- ✅ Products management
+- ✅ Mark products as bought + expense list
+- ✅ Account balance calculation
 
-mkdir -p Entwicklung/Rust
-
-cd Entwicklung/Rust
-
-cargo leptos new --git https://github.com/leptos-rs/start-actix 
-
-#Dann [Projektnamen eingeben]
-
-cd [Project Name]
-
-code . #Öffnet VSCode #optional wenn schon in VSCode
-```
-#Gehe im VSCode Explorer links in den Ordner src und öffne die Datei app.rs -> Das ist der source code in Rust.
-#Jetzt programmieren
-```
-cargo leptos watch #startet die Website
-```
-
-
-<img width="2558" height="1440" alt="image" src="https://github.com/user-attachments/assets/f283c4e0-c183-4177-9ed3-0ed1b0c852c3" />
-
+### Phase 2-3 (Future)
+- Subscriptions
+- Savings goal calculator
+- Dashboard home page
+- Graphical reporting
+- Groups
