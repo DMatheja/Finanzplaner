@@ -1,0 +1,8 @@
+<h2><%= @product.name %></h2>
+<p><strong>Category:</strong> <%= @product.category.name %></p>
+<p><strong>Price:</strong> €<%= number_with_precision(@product.price, precision: 2) %></p>
+<br>
+<a href="<%= edit_product_path(@product) %>"><button>Edit</button></a>
+<a href="<%= new_transaction_path(product_id: @product.id) %>"><button>Mark Bought</button></a>
+<a href="<%= product_path(@product) %>" data-method="delete"><button>Delete</button></a>
+<a href="<%= products_path %>"><button>Back</button></a>

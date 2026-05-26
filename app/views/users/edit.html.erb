@@ -1,0 +1,23 @@
+<h2>Edit User</h2>
+<form method="post" action="<%= user_path(@user) %>">
+  <input type="hidden" name="_method" value="patch">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  
+  <label>Name:</label>
+  <input type="text" name="user[name]" value="<%= @user.name %>" required>
+  
+  <label>Email:</label>
+  <input type="email" name="user[email]" value="<%= @user.email %>" required>
+  
+  <% if current_user.admin? %>
+    <label>Role:</label>
+    <select name="user[role]">
+      <option value="viewer" <%= 'selected' if @user.viewer? %>>Viewer</option>
+      <option value="user" <%= 'selected' if @user.user? %>>User</option>
+      <option value="admin" <%= 'selected' if @user.admin? %>>Admin</option>
+    </select>
+  <% end %>
+  
+  <button type="submit">Update</button>
+  <a href="<%= user_path(@user) %>"><button type="button">Cancel</button></a>
+</form>

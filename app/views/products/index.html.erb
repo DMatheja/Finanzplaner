@@ -1,0 +1,24 @@
+<h2>Products</h2>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Price</th>
+    <th>Actions</th>
+  </tr>
+  <% @products.each do |product| %>
+    <tr>
+      <td><%= product.name %></td>
+      <td><%= product.category.name %></td>
+      <td>€<%= number_with_precision(product.price, precision: 2) %></td>
+      <td>
+        <a href="<%= product_path(product) %>">View</a>
+        <a href="<%= edit_product_path(product) %>">Edit</a>
+        <a href="<%= new_transaction_path(product_id: product.id) %>">Mark Bought</a>
+        <a href="<%= product_path(product) %>" data-method="delete">Delete</a>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<br>
+<a href="<%= new_product_path %>"><button>New Product</button></a>

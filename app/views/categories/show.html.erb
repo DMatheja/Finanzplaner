@@ -1,0 +1,8 @@
+<h2><%= @category.name %></h2>
+<p><strong>Limit:</strong> €<%= @category.limit || 'None' %></p>
+<p><strong>Total Spent:</strong> €<%= number_with_precision(@category.total_spent, precision: 2) %></p>
+<p><strong>Status:</strong> <%= @category.over_limit? ? 'Over Limit!' : 'OK' %></p>
+<br>
+<a href="<%= edit_category_path(@category) %>"><button>Edit</button></a>
+<a href="<%= category_path(@category) %>" data-method="delete"><button>Delete</button></a>
+<a href="<%= categories_path %>"><button>Back</button></a>

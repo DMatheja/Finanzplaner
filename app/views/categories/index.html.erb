@@ -1,0 +1,25 @@
+<h2>Categories</h2>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Limit</th>
+    <th>Spent</th>
+    <th>Status</th>
+    <th>Actions</th>
+  </tr>
+  <% @categories.each do |category| %>
+    <tr>
+      <td><%= category.name %></td>
+      <td>€<%= category.limit || 'None' %></td>
+      <td>€<%= number_with_precision(category.total_spent, precision: 2) %></td>
+      <td><%= category.over_limit? ? 'Over Limit' : 'OK' %></td>
+      <td>
+        <a href="<%= category_path(category) %>">View</a>
+        <a href="<%= edit_category_path(category) %>">Edit</a>
+        <a href="<%= category_path(category) %>" data-method="delete">Delete</a>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<br>
+<a href="<%= new_category_path %>"><button>New Category</button></a>

@@ -1,0 +1,18 @@
+<h2>Mark Product as Bought</h2>
+<form method="post" action="<%= transactions_path %>">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  
+  <p><strong>Product:</strong> <%= @product.name %></p>
+  <p><strong>Price:</strong> €<%= number_with_precision(@product.price, precision: 2) %></p>
+  
+  <label>Amount (if different):</label>
+  <input type="number" step="0.01" name="transaction[amount]" value="<%= @product.price %>"> 
+  
+  <label>Date:</label>
+  <input type="datetime-local" name="transaction[transaction_date]" value="<%= DateTime.now.strftime('%Y-%m-%dT%H:%M') %>" required>
+  
+  <input type="hidden" name="transaction[product_id]" value="<%= @product.id %>">
+  
+  <button type="submit">Record Purchase</button>
+  <a href="<%= products_path %>"><button type="button">Cancel</button></a>
+</form>
