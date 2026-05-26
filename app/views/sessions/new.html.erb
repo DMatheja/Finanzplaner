@@ -1,0 +1,19 @@
+<h2>Login</h2>
+<form method="post" action="<%= login_path %>">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  
+  <label>Email:</label>
+  <input type="email" name="email" required>
+  
+  <label>Password:</label>
+  <input type="password" name="password" required>
+  
+  <button type="submit">Login</button>
+</form>
+
+<h3>Test Users:</h3>
+<ul>
+  <li><strong>Admin:</strong> admin@example.com / password123</li>
+  <li><strong>User:</strong> user@example.com / password123</li>
+  <li><strong>Viewer:</strong> viewer@example.com / password123</li>
+</ul>

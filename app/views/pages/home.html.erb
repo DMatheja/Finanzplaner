@@ -1,0 +1,18 @@
+<h2>Home</h2>
+<div>
+  <h3>Welcome, <%= current_user.name %>!</h3>
+  <p><strong>Current Balance:</strong> €<%= number_with_precision(current_user.balance, precision: 2) %></p>
+  <p><strong>Role:</strong> <%= current_user.role.titleize %></p>
+</div>
+
+<div>
+  <h3>Quick Links:</h3>
+  <ul>
+    <li><a href="<%= categories_path %>">Manage Categories</a></li>
+    <li><a href="<%= products_path %>">Manage Products</a></li>
+    <li><a href="<%= transactions_path %>">View Expenses</a></li>
+    <% if current_user.admin? %>
+      <li><a href="<%= users_path %>">Manage Users</a></li>
+    <% end %>
+  </ul>
+</div>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finanzplaner</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+      header { background: #333; color: white; padding: 20px; }
+      header a { color: white; text-decoration: none; margin-right: 15px; }
+      main { padding: 20px; }
+      .container { max-width: 1200px; margin: 0 auto; }
+      table { border-collapse: collapse; width: 100%; }
+      th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+      th { background: #f2f2f2; }
+      form { max-width: 500px; }
+      input, select, textarea { width: 100%; padding: 8px; margin: 5px 0; box-sizing: border-box; }
+      button { background: #4CAF50; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+      button:hover { background: #45a049; }
+      .alert { padding: 12px; margin: 10px 0; border-radius: 4px; }
+      .alert.notice { background: #d4edda; color: #155724; }
+      .alert.alert { background: #f8d7da; color: #721c24; }
+      .nav-links { display: flex; gap: 15px; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Finanzplaner</h1>
+        <% if logged_in? %>
+          <div class="nav-links">
+            <a href="<%= root_path %>">Home</a>
+            <a href="<%= categories_path %>">Categories</a>
+            <a href="<%= products_path %>">Products</a>
+            <a href="<%= transactions_path %>">Expenses</a>
+            <% if current_user.admin? %>
+              <a href="<%= users_path %>">Users</a>
+            <% end %>
+            <a href="<%= user_path(current_user) %>">Profile</a>
+            <a href="<%= logout_path %>" data-method="delete">Logout</a>
+          </div>
+        <% end %>
+      </div>
+    </header>
+    
+    <main>
+      <div class="container">
+        <% if notice %>
+          <div class="alert notice"><%= notice %></div>
+        <% end %>
+        <% if alert %>
+          <div class="alert alert"><%= alert %></div>
+        <% end %>
+        <%= yield %>
+      </div>
+    </main>
+  </body>
+</html>
