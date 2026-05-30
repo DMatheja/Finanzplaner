@@ -1,6 +1,8 @@
 # app/models/user.rb
 class User < ApplicationRecord
   has_secure_password
+  enum :role, { admin: 0, user: 1, viewer: 2 }
+
   has_many :categories, dependent: :destroy
   has_many :subscriptions, dependent: :destroy
   
@@ -10,18 +12,6 @@ class User < ApplicationRecord
   # Rate limiting
   MAX_ATTEMPTS = 3
   LOCKOUT_DURATION = 15.minutes
-  
-  def admin?
-    role == 0
-  end
-  
-  def user?
-    role == 1
-  end
-  
-  def viewer?
-    role == 2
-  end
   
   def locked_out?
     return false unless rate_limit_enabled
