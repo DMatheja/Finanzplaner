@@ -3,6 +3,11 @@
     <h1 style="margin: 0; font-size: 24px;">
       <%= link_to "Finanzplaner", root_path, style: "color: white; text-decoration: none;" %>
     </h1>
+    <% if current_user&.test_admin? %>
+      <span style="background: #ff9800; color: white; padding: 5px 10px; border-radius: 4px; font-size: 12px; font-weight: bold;">
+        ⏰ Time Offset: +<%= current_user.time_offset || 0 %> days
+      </span>
+    <% end %>
   </div>
   
   <nav style="display: flex; gap: 30px; align-items: center;">
@@ -14,6 +19,9 @@
       <%= link_to "Subscriptions", subscriptions_path, style: "color: white; text-decoration: none;" %>
       
       <div style="display: flex; align-items: center; gap: 15px; padding-left: 20px; border-left: 1px solid #666;">
+        <% if current_user.test_admin? %>
+          <%= button_to "⏰ +1 Day", advance_time_sessions_path, method: :post, form: { style: "display: inline; margin: 0;" }, style: "color: #ffeb3b; background: transparent; border: none; text-decoration: none; font-weight: bold; cursor: pointer; padding: 0;" %>
+        <% end %>
         <span><strong><%= current_user.name %></strong> (<%= role_name(current_user.role) %>)</span>
         <%= link_to "Logout", logout_path, method: :delete, data: { confirm: "Are you sure?" }, style: "color: #ff6b6b; text-decoration: none;" %>
       </div>

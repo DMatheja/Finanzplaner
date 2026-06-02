@@ -1,7 +1,10 @@
 <div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
   <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
     <h2>Products</h2>
-    <%= link_to "Add New Product", new_product_path, class: "btn btn-primary", style: "background: #0066cc; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none;" %>
+    <div style="display: flex; gap: 10px;">
+      <%= link_to "📜 History", history_products_path, style: "background: #6c757d; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-size: 14px;" %>
+      <%= link_to "Add New Product", new_product_path, class: "btn btn-primary", style: "background: #0066cc; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none;" %>
+    </div>
   </div>
 
   <div style="margin-bottom: 20px; padding: 15px; background: #f9f9f9; border-radius: 6px;">
@@ -47,6 +50,6 @@
       </tbody>
     </table>
   <% else %>
-    <p style="text-align: center; color: #999;">No products yet. <%= link_to "Create one", new_product_path, style: "color: #0066cc;" %></p>
+    <p style="text-align: center; color: #999;">No active products. <%= link_to "Create one", new_product_path, style: "color: #0066cc;" %> or <%= link_to "view history", history_products_path, style: "color: #0066cc;" %></p>
   <% end %>
 </div>

@@ -28,10 +28,25 @@
       <%= form.number_field :income, step: 0.01, style: "width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; box-sizing: border-box;" %>
     </div>
 
-    <% if current_user.admin? %>
+    <div style="margin-bottom: 20px;">
+      <%= form.label :income_day, "Income Day of Month (1-31)", style: "display: block; margin-bottom: 8px; font-weight: bold;" %>
+      <%= form.number_field :income_day, min: 1, max: 31, style: "width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; box-sizing: border-box;" %>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <%= form.label :password, "New Password", style: "display: block; margin-bottom: 8px; font-weight: bold;" %>
+      <%= form.password_field :password, style: "width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; box-sizing: border-box;" %>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <%= form.label :password_confirmation, style: "display: block; margin-bottom: 8px; font-weight: bold;" %>
+      <%= form.password_field :password_confirmation, style: "width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; box-sizing: border-box;" %>
+    </div>
+
+    <% if current_user.admin? || current_user.test_admin? %>
       <div style="margin-bottom: 20px;">
         <%= form.label :role, style: "display: block; margin-bottom: 8px; font-weight: bold;" %>
-        <%= form.select :role, { 'Admin' => 'admin', 'User' => 'user', 'Viewer' => 'viewer' }, {}, style: "width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; box-sizing: border-box;" %>
+        <%= form.select :role, { 'Admin' => 'admin', 'User' => 'user', 'Viewer' => 'viewer', 'Test Admin' => 'test_admin' }, {}, style: "width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; box-sizing: border-box;" %>
       </div>
     <% end %>
 

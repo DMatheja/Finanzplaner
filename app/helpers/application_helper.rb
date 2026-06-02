@@ -7,6 +7,8 @@ module ApplicationHelper
       "User"
     when "viewer", "2"
       "Viewer"
+    when "test_admin", "3"
+      "Test Admin"
     else
       "Unknown"
     end

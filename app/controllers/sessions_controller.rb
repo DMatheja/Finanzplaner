@@ -2,7 +2,7 @@
 require './lib/security_dictionary'
 
 class SessionsController < ApplicationController
-  skip_before_action :require_login, only: [:new, :create, :attack]
+  skip_before_action :require_login, only: [:new, :create, :attack, :advance_time]
 
   def new
     @users = User.all
@@ -53,6 +53,15 @@ class SessionsController < ApplicationController
       render json: result
       return
     end
+  end
+
+  def advance_time
+    return render json: { success: false, message: "Only TestAdmins can use time travel" } unless current_user&.test_admin?
+
+    current_user.advance_time_by_days!(1)
+    message = "Time advanced by 1 day. Current time offset: +#{current_user.time_offset} days"
+    message += " Monthly income added." if current_user.current_time.day == current_user.income_day
+    redirect_to root_path, notice: message
   end
 
   def destroy

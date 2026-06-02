@@ -5,11 +5,19 @@ Rails.application.routes.draw do
   
   resources :sessions, only: [:new, :create, :destroy] do
     post :attack, on: :collection
+    post :advance_time, on: :collection
   end
   get 'logout', to: 'sessions#destroy'
   
   resources :users
   resources :categories
-  resources :products
+  resources :products do
+    collection do
+      get :history
+    end
+    member do
+      post :repurchase
+    end
+  end
   resources :subscriptions
 end

@@ -55,18 +55,20 @@ class UsersController < ApplicationController
   end
 
   def authorize_access
-    unless current_user.admin?
+    unless current_user.admin? || current_user.test_admin?
       redirect_to root_path, alert: 'You do not have permission to perform this action.'
     end
   end
 
   def authorize_user_access
-    unless current_user.admin? || current_user.id == @user.id
+    unless current_user.admin? || current_user.test_admin? || current_user.id == @user.id
       redirect_to root_path, alert: 'You can only edit your own profile.'
     end
   end
 
   def user_params
-    params.require(:user).permit(:name, :balance, :income, :role)
+    allowed_params = [:name, :balance, :income, :income_day, :password, :password_confirmation]
+    allowed_params << :role if current_user.admin? || current_user.test_admin?
+    params.require(:user).permit(*allowed_params)
   end
 end
