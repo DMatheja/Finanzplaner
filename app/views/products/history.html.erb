@@ -30,7 +30,7 @@
                 <%= product.purchased_at.strftime("%d.%m.%Y %H:%M") if product.purchased_at %>
               </td>
               <td style="padding: 15px; text-align: center;">
-                <%= link_to "🔄 Repurchase", product_repurchase_path(product), method: :post, style: "color: #28a745; text-decoration: none; font-size: 12px; padding: 6px 12px; background: #e8f5e9; border-radius: 4px; display: inline-block;" %>
+                <%= button_to "🔄 Repurchase", repurchase_product_path(product), method: :post, form: { style: "display: inline; margin: 0;" }, style: "color: #28a745; background: #e8f5e9; border: none; border-radius: 4px; padding: 6px 12px; font-size: 12px; cursor: pointer;" %>
                 <%= link_to "📖 View", product_path(product), style: "color: #0066cc; text-decoration: none; font-size: 12px; padding: 6px 12px; background: #e3f2fd; border-radius: 4px; display: inline-block; margin-left: 5px;" %>
               </td>
             </tr>
